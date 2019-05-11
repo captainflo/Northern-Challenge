@@ -17,7 +17,12 @@ class App extends Component {
   login=()=>{
     this.setState({waitingForServer:true})
     
-    if(this.state.email === ""){
+    // check if email had @ sign
+    const emailOk = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/.test(this.state.email)
+
+      console.log( 'email passes regex:' + emailOk)
+
+    if(this.state.email === "" || !emailOk){
       setTimeout(() => {
         this.setState({errorEmail:true});
         this.setState({okEmail:false});
@@ -38,17 +43,15 @@ class App extends Component {
       this.setState({waitingForServer:false})
       this.setState({loggedIn:false});
     }, 2000)
-    }
-
-    
-  
     console.log("Email:" + this.state.email);
     console.log("Interest:" + this.state.select);
+    }
+
+   
   }
 
   handleType=(event)=>{
     this.setState({[event.target.name]: event.target.value})
-    console.log(this.state.email)
   }
   render() {    
     return (
@@ -60,7 +63,7 @@ class App extends Component {
           <div className="row">
             <div className="col">
             {this.state.errorEmail&&<span>Please enter a valid email address</span>}
-              <input  className={`form-input " ${this.state.errorEmail&&"form-error"}`} disabled={this.state.waitingForServer} onChange={this.handleType} name="email" type="email" placeholder="Your Email Address *"/>
+              <input className={`form-input " ${this.state.errorEmail&&"form-error"}`} disabled={this.state.waitingForServer} onChange={this.handleType} name="email" type="email" placeholder="Your Email Address *"/>
             </div>
             <div className="col">
               <select className={`form-input myselect " ${this.state.errorInterest&&"form-error"}`} disabled={this.state.waitingForServer} name="select" onChange={this.handleType}>
@@ -70,7 +73,7 @@ class App extends Component {
               </select>
             </div>
             </div>
-            <button className="button-submit" onClick={this.login}>{this.state.waitingForServer?"Submitting...":"Sign Up Now"}</button>
+            <button className="button-submit" disabled={this.state.waitingForServer} onClick={this.login}>{this.state.waitingForServer?"Submitting...":"Sign Up Now"}</button>
         </div>}
           {this.state.okSelect&&this.state.okEmail&&<Good/>}
       </div>
