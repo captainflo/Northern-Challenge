@@ -67,6 +67,10 @@ span{
   border:2px solid #D02035;
 }
 
+.error-interest{
+  margin-right: 10%;
+}
+
 .button-submit{
   margin-top: 20px;
   font-family: 'Merriweather', serif;
@@ -86,6 +90,29 @@ span{
   font-size: 35px;
   margin-top: 40px;
   color: #FFF;
+}
+
+/* Mobile Tablet */
+@media only screen and (max-width: 600px) {
+  .title{
+    font-size: 35px;
+  }
+
+  span{
+    font-size: 9px;
+  }
+
+  .text-paragraphe{
+    font-size: 16px;
+  }
+
+  .form-input{
+    font-size: 10px;
+  }
+
+  .error-interest {
+    margin-right: 0%;
+}
 }
 
 

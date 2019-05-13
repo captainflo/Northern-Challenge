@@ -59,7 +59,7 @@ class App extends Component {
         <h2 className="title">INTERNSHIP SIGN UP FORM</h2>
         <hr></hr>
         {this.state.loggedIn&&<div><p className="text-paragraphe">Prepare for your career with Project Manager Management, Web-Developement, Graphic design, or Digital Marketing Internship at Northern</p>
-          {this.state.errorInterest&&<span>Please select an Interest</span>}
+          {this.state.errorInterest&&<span className="error-interest">Please select an Interest</span>}
           <div className="row">
             <div className="col">
             {this.state.errorEmail&&<span>Please enter a valid email address</span>}
